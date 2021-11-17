@@ -1,4 +1,4 @@
-package com.example.dictionaryapp.feature.data.local.entity.util
+package com.example.dictionaryapp.feature.data.util
 
 import java.lang.reflect.Type
 

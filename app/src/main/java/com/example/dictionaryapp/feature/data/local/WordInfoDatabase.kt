@@ -1,9 +1,9 @@
-package com.example.dictionaryapp.feature.data.local.entity
+package com.example.dictionaryapp.feature.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.dictionaryapp.feature.data.local.entity.util.Converters
+import com.example.dictionaryapp.feature.data.local.entity.WordInfoEntity
 
 @Database(
     entities=[WordInfoEntity::class],
@@ -11,5 +11,5 @@ import com.example.dictionaryapp.feature.data.local.entity.util.Converters
 )
 @TypeConverters(Converters::class)
 abstract class WordInfoDatabase: RoomDatabase() {
-    abstract val dao:WordInfoDao
+    abstract val dao: WordInfoDao
 }

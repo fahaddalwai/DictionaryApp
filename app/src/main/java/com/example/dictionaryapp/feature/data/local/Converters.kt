@@ -1,7 +1,8 @@
-package com.example.dictionaryapp.feature.data.local.entity.util
+package com.example.dictionaryapp.feature.data.local
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
+import com.example.dictionaryapp.feature.data.util.JsonParser
 import com.example.dictionaryapp.feature.domain.model.Meaning
 import com.google.gson.reflect.TypeToken
 @ProvidedTypeConverter
