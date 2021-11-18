@@ -14,6 +14,7 @@ class WordInfoRepositoryImpl(
     private val api: DictionaryApi,
     private val dao: WordInfoDao
 ) : WordInfoRepository {
+
     override fun getWordInfo(word: String): Flow<Resource<List<WordInfo>>> = flow {
 
         emit(Resource.Loading())
