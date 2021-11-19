@@ -2,6 +2,10 @@ package com.example.dictionaryapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 
 import androidx.lifecycle.Lifecycle
@@ -9,27 +13,42 @@ import androidx.lifecycle.LifecycleOwner
 import com.example.dictionaryapp.feature.presentation.WordInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.dictionaryapp.databinding.ActivityMainBinding
+import kotlinx.coroutines.delay
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
-    private lateinit var viewModel:WordInfoViewModel
+    private val viewModel: WordInfoViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding= DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        viewModel = ViewModelProvider(this)[WordInfoViewModel::class.java]
+        val view = binding.root
+
+        setContentView(view)
+
+
 
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
-        // Specify the fragment view as the lifecycle owner of the binding.
-        // This is used so that the binding can observe LiveData updates
-        //binding.lifecycleOwner = viewLifecycleOwner
+
+
+        binding.editText.addTextChangedListener { editable->
+            editable?.let{
+                if(it.toString().isNotEmpty() || it.isNotBlank()){
+                    viewModel.onSearch(it.toString())
+                    Log.i("itscheck", it.toString())
+                }
+            }
+        }
 
 
 
