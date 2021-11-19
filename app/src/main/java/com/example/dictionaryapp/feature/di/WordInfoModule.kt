@@ -45,6 +45,7 @@ object WordInfoModule {
         return Room.databaseBuilder(
             app, WordInfoDatabase::class.java, "wordDatabase"
         ).addTypeConverter(Converters(GsonParser(Gson())))
+            .fallbackToDestructiveMigration()
             .build()
     }
 

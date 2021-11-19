@@ -5,8 +5,8 @@ import com.example.dictionaryapp.feature.domain.model.WordInfo
 
 data class WordInfoDto(
     val meanings: List<MeaningDto>,
-    val origin: String,
-    val phonetic: String,
+    val origin: String?,
+    val phonetic: String?,
     val word: String,
     val phonetics: List<PhoneticDto>
 ) {

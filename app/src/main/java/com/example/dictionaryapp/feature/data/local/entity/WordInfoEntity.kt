@@ -10,10 +10,9 @@ import com.example.dictionaryapp.feature.domain.model.WordInfo
 data class WordInfoEntity(
     val word: String,
     val meanings: List<Meaning>,
-    val origin: String,
-    val phonetic: String,
-    @PrimaryKey
-    val id: Int? = null
+    val origin: String?,
+    val phonetic: String?,
+    @PrimaryKey val id: Int? = null
 ) {
     fun toWordInfo(): WordInfo {
         return WordInfo(
