@@ -3,19 +3,20 @@ package com.example.dictionaryapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.*
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.*
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import com.example.dictionaryapp.feature.presentation.WordInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.dictionaryapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 
 
 @AndroidEntryPoint
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+       viewModel.showProgressBar.observe(this,{
+           binding.progressBar.isVisible = it
+       })
 
 
 

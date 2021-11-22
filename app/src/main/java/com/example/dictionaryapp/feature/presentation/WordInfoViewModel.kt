@@ -27,12 +27,16 @@ class WordInfoViewModel @Inject constructor(
     private val _state = MutableLiveData<WordInfoState>()
     val state: LiveData<WordInfoState> = _state
 
+    private val _showProgressBar = MutableLiveData<Boolean>()
+    val showProgressBar: LiveData<Boolean> = _showProgressBar
+
 
     private var searchJob: Job? = null
 
 
     init{
         _state.value=WordInfoState()
+
     }
 
     fun onSearch(query: String) {
@@ -50,7 +54,7 @@ class WordInfoViewModel @Inject constructor(
 
                             )
                             Log.i("let me see3",_state.value.toString())
-
+                           _showProgressBar.value = false
                         }
                         is Resource.Error -> {
                             _state.value = WordInfoState(
@@ -59,7 +63,7 @@ class WordInfoViewModel @Inject constructor(
                             )
                             Log.i("let me see2",_state.value.toString())
 
-
+                            _showProgressBar.value = false
                         }
                         is Resource.Loading -> {
                             _state.value = WordInfoState(
@@ -67,12 +71,13 @@ class WordInfoViewModel @Inject constructor(
                                 isLoading = true
                             )
                             Log.i("let me see1",_state.value.toString())
+                            _showProgressBar.value = true
+
                         }
                     }
                 }.launchIn(this)
         }
     }
-
 
 
 
