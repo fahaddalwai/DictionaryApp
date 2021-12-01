@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DictionaryApp</string>
+    <string name="enter_any_word_to_find_its_meaning_in_the_dictionary">Enter any word to find its meaning in the dictionary</string>
 </resources>

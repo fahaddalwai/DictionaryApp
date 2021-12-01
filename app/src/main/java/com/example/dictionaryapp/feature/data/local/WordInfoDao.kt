@@ -7,7 +7,9 @@ import androidx.room.Query
 import com.example.dictionaryapp.feature.data.local.entity.WordInfoEntity
 
 @Dao
-interface WordInfoDao {
+interface
+
+WordInfoDao {
 
     @Insert(onConflict= OnConflictStrategy.REPLACE)
     suspend fun insertWordInfos(infos:List<WordInfoEntity>)

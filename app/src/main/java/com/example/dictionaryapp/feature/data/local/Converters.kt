@@ -5,6 +5,8 @@ import androidx.room.TypeConverter
 import com.example.dictionaryapp.feature.data.util.JsonParser
 import com.example.dictionaryapp.feature.domain.model.Meaning
 import com.google.gson.reflect.TypeToken
+
+
 @ProvidedTypeConverter
 class Converters(
     private val jsonParser: JsonParser
